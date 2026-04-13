@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carswell Finance — Personal Finance, Dunedin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --teal:       #0A5C48;
+    --teal-mid:   #0F7A5F;
+    --teal-light: #D4EDE7;
+    --teal-pale:  #EDF7F4;
+    --amber:      #D4841A;
+    --amber-light:#FDF2E0;
+    --amber-pale: #FEF8EE;
+    --cream:      #FAF7F2;
+    --white:      #FFFFFF;
+    --ink:        #1A2B26;
+    --ink-mid:    #3D5248;
+    --ink-muted:  #6B8278;
+    --border:     rgba(10,92,72,0.12);
+    --radius-sm:  8px;
+    --radius-md:  14px;
+    --radius-lg:  22px;
+    --radius-xl:  32px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'DM Serif Display', serif;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--ink);
+  }
+
+  img { display: block; max-width: 100%; }
+  a { text-decoration: none; color: inherit; }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* ── NAV ── */
+  .nav {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    gap: 1rem;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .logo-mark {
+    width: 38px;
+    height: 38px;
+    background: var(--teal);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .logo-mark svg { width: 20px; height: 20px; }
+  .logo-text {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    color: var(--teal);
+    letter-spacing: -0.2px;
+  }
+  .logo-text span { color: var(--amber); }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+  }
+  .nav-links a {
+    font-size: 14px;
+    color: var(--ink-muted);
+    font-weight: 400;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-phone {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--teal-pale);
+    border: 1px solid var(--teal-light);
+    border-radius: 24px;
+    padding: 8px 18px;
+    font-size: 14px;
+    color: var(--teal);
+    font-weight: 500;
+    transition: background 0.2s;
+  }
+  .nav-phone:hover { background: var(--teal-light); }
+  .nav-phone svg { width: 15px; height: 15px; flex-shrink: 0; }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--teal);
+    overflow: hidden;
+    position: relative;
+  }
+  .hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 5rem 1.5rem 4.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 1.25rem;
+  }
+  .hero-badge-dot {
+    width: 6px;
+    height: 6px;
+    background: #5DCAA5;
+    border-radius: 50%;
+  }
+  .hero h1 {
+    font-size: 46px;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.5px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: #9FE1CB;
+  }
+  .hero-sub {
+    font-size: 17px;
+    color: rgba(255,255,255,0.78);
+    max-width: 440px;
+    margin-bottom: 2rem;
+    line-height: 1.65;
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--amber);
+    color: #fff;
+    border: none;
+    border-radius: 26px;
+    padding: 14px 26px;
+    font-size: 15px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-primary:hover { background: #BA7517; transform: translateY(-1px); }
+  .btn-ghost {
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    border: 1.5px solid rgba(255,255,255,0.35);
+    border-radius: 26px;
+    padding: 14px 26px;
+    font-size: 15px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    cursor: pointer;
+    transition: background 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-ghost:hover { background: rgba(255,255,255,0.18); }
+  .hero-note {
+    margin-top: 1.1rem;
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .hero-note svg { width: 14px; height: 14px; opacity: 0.7; flex-shrink: 0; }
+
+  .hero-card {
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    padding: 2rem;
+    box-shadow: 0 12px 48px rgba(0,0,0,0.15);
+  }
+  .hero-card-header {
+    font-size: 13px;
+    color: var(--ink-muted);
+    margin-bottom: 1.25rem;
+    font-weight: 400;
+  }
+  .asset-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+  }
+  .asset-pill {
+    background: var(--teal-pale);
+    border: 1px solid var(--teal-light);
+    border-radius: var(--radius-md);
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--teal);
+    font-weight: 500;
+  }
+  .asset-pill svg { width: 16px; height: 16px; flex-shrink: 0; }
+  .hero-card-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 0 0 1.25rem;
+  }
+  .hero-card-hours {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .hours-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--amber-light);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .hours-icon svg { width: 16px; height: 16px; }
+  .hours-text { font-size: 13px; color: var(--ink-mid); line-height: 1.55; }
+  .hours-text strong { font-weight: 500; color: var(--ink); display: block; }
+
+  /* ── TRUST BAR ── */
+  .trust-bar {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 1.25rem 1.5rem;
+  }
+  .trust-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13.5px;
+    color: var(--ink-mid);
+  }
+  .trust-item svg { width: 18px; height: 18px; color: var(--teal); flex-shrink: 0; }
+  .trust-divider {
+    width: 1px;
+    height: 18px;
+    background: var(--border);
+  }
+  .stars { color: var(--amber); font-size: 13px; }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--teal-mid);
+    margin-bottom: 0.75rem;
+  }
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 18px;
+    height: 2px;
+    background: var(--teal-mid);
+    border-radius: 2px;
+  }
+
+  /* ── WHY SECTION ── */
+  .why-section {
+    padding: 5rem 1.5rem;
+    background: var(--cream);
+  }
+  .why-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .why-text h2 {
+    font-size: 36px;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    letter-spacing: -0.3px;
+  }
+  .why-text p {
+    font-size: 16px;
+    color: var(--ink-muted);
+    margin-bottom: 1.5rem;
+    max-width: 400px;
+  }
+  .why-callout {
+    background: var(--teal);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    color: #fff;
+    margin-top: 1.5rem;
+  }
+  .why-callout p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.85);
+    margin: 0;
+    max-width: none;
+    font-style: italic;
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    line-height: 1.5;
+  }
+  .why-callout cite {
+    display: block;
+    font-style: normal;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: #9FE1CB;
+    margin-top: 0.75rem;
+  }
+  .diff-cards { display: flex; flex-direction: column; gap: 14px; }
+  .diff-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .diff-card:hover {
+    border-color: var(--teal-light);
+    box-shadow: 0 4px 20px rgba(10,92,72,0.07);
+  }
+  .diff-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: var(--teal-pale);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .diff-icon svg { width: 20px; height: 20px; color: var(--teal); }
+  .diff-icon.amber { background: var(--amber-light); }
+  .diff-icon.amber svg { color: var(--amber); }
+  .diff-body h4 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .diff-body p { font-size: 14px; color: var(--ink-muted); line-height: 1.55; }
+
+  /* ── ASSETS SECTION ── */
+  .assets-section {
+    padding: 5rem 1.5rem;
+    background: var(--teal-pale);
+  }
+  .assets-inner { max-width: 1100px; margin: 0 auto; }
+  .section-heading {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  .section-heading h2 {
+    font-size: 36px;
+    letter-spacing: -0.3px;
+    margin-bottom: 0.75rem;
+  }
+  .section-heading p {
+    font-size: 16px;
+    color: var(--ink-muted);
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  .assets-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .asset-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem 1.5rem;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .asset-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 28px rgba(10,92,72,0.1);
+  }
+  .asset-card-icon {
+    width: 56px;
+    height: 56px;
+    background: var(--teal-pale);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+  }
+  .asset-card-icon svg { width: 26px; height: 26px; color: var(--teal); }
+  .asset-card h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .asset-card p { font-size: 13px; color: var(--ink-muted); line-height: 1.5; }
+
+  /* ── HOW IT WORKS ── */
+  .how-section {
+    padding: 5rem 1.5rem;
+    background: var(--white);
+  }
+  .how-inner { max-width: 1100px; margin: 0 auto; }
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 3rem;
+    position: relative;
+  }
+  .steps::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: calc(12.5% + 20px);
+    right: calc(12.5% + 20px);
+    height: 1px;
+    background: var(--teal-light);
+    z-index: 0;
+  }
+  .step {
+    text-align: center;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 1;
+  }
+  .step-num {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--teal);
+    color: #fff;
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.25rem;
+  }
+  .step h4 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .step p { font-size: 13.5px; color: var(--ink-muted); line-height: 1.55; }
+
+  /* ── ENQUIRY FORM ── */
+  .form-section {
+    padding: 5rem 1.5rem;
+    background: var(--cream);
+  }
+  .form-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .form-info h2 {
+    font-size: 36px;
+    letter-spacing: -0.3px;
+    margin-bottom: 1rem;
+  }
+  .form-info p {
+    font-size: 16px;
+    color: var(--ink-muted);
+    margin-bottom: 2rem;
+  }
+  .contact-options { display: flex; flex-direction: column; gap: 12px; }
+  .contact-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 14px 16px;
+    cursor: pointer;
+    transition: border-color 0.2s;
+  }
+  .contact-option:hover { border-color: var(--teal-mid); }
+  .contact-option .co-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--teal-pale);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .contact-option .co-icon svg { width: 18px; height: 18px; color: var(--teal); }
+  .contact-option .co-icon.amber-bg { background: var(--amber-light); }
+  .contact-option .co-icon.amber-bg svg { color: var(--amber); }
+  .co-text { font-size: 13px; color: var(--ink-muted); line-height: 1.45; }
+  .co-text strong { font-weight: 500; color: var(--ink); display: block; font-size: 14px; }
+
+  .enquiry-form {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    padding: 2rem;
+  }
+  .enquiry-form h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+  .form-row { margin-bottom: 1rem; }
+  .form-row label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-mid);
+    margin-bottom: 6px;
+  }
+  .form-row input,
+  .form-row select,
+  .form-row textarea {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--ink);
+    background: var(--cream);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+    appearance: none;
+  }
+  .form-row input:focus,
+  .form-row select:focus,
+  .form-row textarea:focus {
+    border-color: var(--teal-mid);
+    box-shadow: 0 0 0 3px rgba(10,92,72,0.08);
+    background: var(--white);
+  }
+  .form-row textarea { resize: vertical; min-height: 90px; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .form-submit {
+    width: 100%;
+    background: var(--teal);
+    color: #fff;
+    border: none;
+    border-radius: 26px;
+    padding: 14px;
+    font-size: 15px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: background 0.2s, transform 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .form-submit:hover { background: var(--teal-mid); transform: translateY(-1px); }
+  .form-note {
+    font-size: 12px;
+    color: var(--ink-muted);
+    text-align: center;
+    margin-top: 0.75rem;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--teal);
+    padding: 3rem 1.5rem 2rem;
+  }
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 3rem;
+  }
+  .footer-brand .logo-text { color: #fff; }
+  .footer-brand .logo-text span { color: #9FE1CB; }
+  .footer-brand p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    margin-top: 0.75rem;
+    line-height: 1.6;
+    max-width: 260px;
+  }
+  .footer-col h5 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 8px; }
+  .footer-col ul li a {
+    font-size: 14px;
+    color: rgba(255,255,255,0.75);
+    transition: color 0.2s;
+  }
+  .footer-col ul li a:hover { color: #fff; }
+  .footer-col .footer-contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 10px;
+  }
+  .footer-col .footer-contact-item svg {
+    width: 15px;
+    height: 15px;
+    color: #9FE1CB;
+    margin-top: 3px;
+    flex-shrink: 0;
+  }
+  .footer-bottom {
+    max-width: 1100px;
+    margin: 2.5rem auto 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.4); }
+  .footer-bottom a { font-size: 12px; color: rgba(255,255,255,0.5); transition: color 0.2s; }
+  .footer-bottom a:hover { color: rgba(255,255,255,0.85); }
+  .footer-legal { display: flex; gap: 1.5rem; }
+
+  /* ── SUCCESS MESSAGE ── */
+  .success-msg {
+    display: none;
+    background: var(--teal-pale);
+    border: 1px solid var(--teal-light);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.25rem;
+    color: var(--teal);
+    font-size: 14px;
+    margin-top: 0.75rem;
+    text-align: center;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; padding: 3rem 1.5rem; }
+    .hero h1 { font-size: 36px; }
+    .hero-card { max-width: 480px; }
+    .why-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .assets-grid { grid-template-columns: repeat(2, 1fr); }
+    .steps { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+    .steps::before { display: none; }
+    .form-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+    .nav-links { display: none; }
+  }
+  @media (max-width: 580px) {
+    .hero h1 { font-size: 30px; }
+    .assets-grid { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr; }
+    .form-grid { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .trust-divider { display: none; }
+    .trust-inner { gap: 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="logo">
+      <div class="logo-mark">
+        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 2L3 7v10h5v-5h4v5h5V7L10 2z" fill="white" opacity="0.9"/>
+        </svg>
+      </div>
+      <span class="logo-text">Carswell <span>Finance</span></span>
+    </div>
+    <div class="nav-links">
+      <a href="#what-we-finance">What we finance</a>
+      <a href="#why-carswell">Why Carswell</a>
+      <a href="#how-it-works">How it works</a>
+      <a href="#enquire">Get in touch</a>
+    </div>
+    <a href="tel:+6403XXXXXXX" class="nav-phone">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 2h4l2 5-2.5 1.5a10 10 0 005 5L14 11l5 2v4a2 2 0 01-2 2C6.5 19 1 13.5 1 4a2 2 0 013-1.73z"/>
+      </svg>
+      Call us — 7 days
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Proudly based in Dunedin, NZ
+      </div>
+      <h1>Finance that <em>comes to you.</em></h1>
+      <p class="hero-sub">Carswell Finance is your local, personal lending specialist. We'll meet you at a time and place that suits you — no queues, no call centres, just a real conversation.</p>
+      <div class="hero-ctas">
+        <button class="btn-primary" onclick="document.getElementById('enquire').scrollIntoView({behavior:'smooth'})">
+          <svg width="15" height="15" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 2h4l2 5-2.5 1.5a10 10 0 005 5L14 11l5 2v4a2 2 0 01-2 2C6.5 19 1 13.5 1 4a2 2 0 013-1.73z"/></svg>
+          Call or enquire today
+        </button>
+        <button class="btn-ghost" onclick="document.getElementById('what-we-finance').scrollIntoView({behavior:'smooth'})">
+          See what we finance
+        </button>
+      </div>
+      <p class="hero-note">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10" cy="10" r="8"/><path d="M10 6v4l2 2"/></svg>
+        Available 7 days, 8:00 am – 9:00 pm
+      </p>
+    </div>
+    <div>
+      <div class="hero-card">
+        <p class="hero-card-header">We help you finance</p>
+        <div class="asset-grid">
+          <div class="asset-pill">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1" y="7" width="18" height="8" rx="2"/><circle cx="5.5" cy="15" r="2"/><circle cx="14.5" cy="15" r="2"/><path d="M1 11h18M7 7l2-4h2l2 4"/></svg>
+            Cars &amp; utes
+          </div>
+          <div class="asset-pill">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 13a7 7 0 0114 0"/><circle cx="6" cy="15" r="2"/><circle cx="14" cy="15" r="2"/><path d="M6 8l2-5h4l3 5"/></svg>
+            Luxury vehicles
+          </div>
+          <div class="asset-pill">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 14c0-4 3-8 8-8s8 4 8 8"/><circle cx="7" cy="15" r="2"/><circle cx="13" cy="15" r="2"/><path d="M10 6V4M7 7l-2-2M13 7l2-2"/></svg>
+            Motorbikes
+          </div>
+          <div class="asset-pill">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1" y="8" width="16" height="7" rx="1.5"/><circle cx="5" cy="15" r="2"/><circle cx="13" cy="15" r="2"/><rect x="17" y="10" width="2" height="3" rx="1"/><path d="M1 11h16"/></svg>
+            Motorhomes &amp; caravans
+          </div>
+          <div class="asset-pill">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 13c2-4 5-7 9-7s7 3 7 7"/><path d="M2 13h16M10 6V4"/><path d="M6 9l-2 4M14 9l2 4"/></svg>
+            Marine &amp; jet ski
+          </div>
+          <div class="asset-pill" style="background:var(--amber-pale); border-color:#FDEBC2; color:var(--amber);">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10" cy="10" r="8"/><path d="M10 6v4l3 3"/></svg>
+            New &amp; used
+          </div>
+        </div>
+        <hr class="hero-card-divider">
+        <div class="hero-card-hours">
+          <div class="hours-icon">
+            <svg viewBox="0 0 20 20" fill="none" stroke="#D4841A" stroke-width="1.8"><circle cx="10" cy="10" r="8"/><path d="M10 5v5l3 3"/></svg>
+          </div>
+          <div class="hours-text">
+            <strong>Open 7 days a week</strong>
+            8:00 am – 9:00 pm · Dunedin &amp; surrounds
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 2l2 5.5h5.5l-4.5 3.5 1.75 5.5L10 13.5l-4.75 3 1.75-5.5L2.5 7.5H8z"/></svg>
+      <span><span class="stars">★★★★★</span>&nbsp; Personal one-on-one service</span>
+    </div>
+    <div class="trust-divider"></div>
+    <div class="trust-item">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 2C7 2 4 4.5 4 8c0 5 6 10 6 10s6-5 6-10c0-3.5-3-6-6-6z"/><circle cx="10" cy="8" r="2"/></svg>
+      <span>Dunedin local — we come to you</span>
+    </div>
+    <div class="trust-divider"></div>
+    <div class="trust-item">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10" cy="10" r="8"/><path d="M7 10l2 2 4-4"/></svg>
+      <span>Responsible lending principles</span>
+    </div>
+    <div class="trust-divider"></div>
+    <div class="trust-item">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10" cy="10" r="8"/><path d="M10 5v5l3 3"/></svg>
+      <span>Available 7 days, 8 am – 9 pm</span>
+    </div>
+  </div>
+</div>
+
+<!-- WHY CARSWELL -->
+<section class="why-section" id="why-carswell">
+  <div class="why-inner">
+    <div class="why-text">
+      <div class="section-label">Why Carswell</div>
+      <h2>You're not just a number to us.</h2>
+      <p>Most lenders treat you like a form to be processed. We think you deserve better — a real person who listens, understands your situation, and finds a solution that actually fits your life.</p>
+      <div class="why-callout">
+        <p>"My goal is simple: to give every Dunedin family and individual the kind of personalised finance experience that was once reserved for the privileged few."</p>
+        <cite>— Carswell Finance, founded in Dunedin</cite>
+      </div>
+    </div>
+    <div class="diff-cards">
+      <div class="diff-card">
+        <div class="diff-icon">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10" cy="7" r="4"/><path d="M2 18c0-4 3.5-7 8-7s8 3 8 7"/></svg>
+        </div>
+        <div class="diff-body">
+          <h4>One person, start to finish</h4>
+          <p>You'll work directly with one advisor — no handoffs, no hold music. The same person who takes your call sees your application through to settlement.</p>
+        </div>
+      </div>
+      <div class="diff-card">
+        <div class="diff-icon amber">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 2C7 2 4 4.5 4 8c0 5 6 10 6 10s6-5 6-10c0-3.5-3-6-6-6z"/><circle cx="10" cy="8" r="2"/></svg>
+        </div>
+        <div class="diff-body">
+          <h4>We come to you — anywhere in Dunedin</h4>
+          <p>If it suits you, we'll visit your home or workplace to talk through your needs in person. Finance on your terms, in your own space.</p>
+        </div>
+      </div>
+      <div class="diff-card">
+        <div class="diff-icon">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10" cy="10" r="8"/><path d="M10 5v5l3 3"/></svg>
+        </div>
+        <div class="diff-body">
+          <h4>7 days a week, evenings too</h4>
+          <p>Life doesn't run 9 to 5 — and neither do we. Reach us any day from 8:00 am to 9:00 pm, including weekends and public holidays.</p>
+        </div>
+      </div>
+      <div class="diff-card">
+        <div class="diff-icon amber">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 2h4l2 5-2.5 1.5a10 10 0 005 5L14 11l5 2v4a2 2 0 01-2 2C6.5 19 1 13.5 1 4a2 2 0 013-1.73z"/></svg>
+        </div>
+        <div class="diff-body">
+          <h4>The personal touch from the first call</h4>
+          <p>When you ring us, a real person answers. We believe the phone call is where trust starts — so we always pick up.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE FINANCE -->
+<section class="assets-section" id="what-we-finance">
+  <div class="assets-inner">
+    <div class="section-heading">
+      <div class="section-label" style="justify-content:center">What we finance</div>
+      <h2>From the road to the water</h2>
+      <p>Asset-based finance for the things that matter to you — whether you're buying new or used, we'll find the right fit.</p>
+    </div>
+    <div class="assets-grid">
+      <div class="asset-card">
+        <div class="asset-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1" y="8" width="22" height="10" rx="2.5"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="18" r="3"/><path d="M1 13h22M8 8l2.5-5h3L16 8"/></svg>
+        </div>
+        <h3>New &amp; used cars</h3>
+        <p>Every make and model, from any dealer or private sale in New Zealand.</p>
+      </div>
+      <div class="asset-card">
+        <div class="asset-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1" y="8" width="22" height="10" rx="2.5"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="18" r="3"/><path d="M8 8l1.5-4h5l2.5 4"/><path d="M16 8h5v3"/></svg>
+        </div>
+        <h3>Luxury &amp; prestige vehicles</h3>
+        <p>Specialist finance for high-value vehicles with competitive terms.</p>
+      </div>
+      <div class="asset-card">
+        <div class="asset-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 16c0-5 3.5-9 9-9s9 4 9 9"/><circle cx="8" cy="18" r="2.5"/><circle cx="16" cy="18" r="2.5"/><path d="M12 7V5M9 8.5L7 6.5M15 8.5l2-2"/></svg>
+        </div>
+        <h3>Motorbikes</h3>
+        <p>Road bikes, tourers, sports bikes — two wheels covered.</p>
+      </div>
+      <div class="asset-card">
+        <div class="asset-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1" y="9" width="19" height="8" rx="1.5"/><circle cx="6" cy="17" r="2.5"/><circle cx="15" cy="17" r="2.5"/><rect x="20" y="11" width="3" height="4" rx="1.5"/><path d="M1 13h19"/></svg>
+        </div>
+        <h3>Motorhomes</h3>
+        <p>New or used motorhomes for the freedom of the open road.</p>
+      </div>
+      <div class="asset-card">
+        <div class="asset-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="9" width="16" height="8" rx="1.5"/><circle cx="7" cy="17" r="2.5"/><circle cx="17" cy="17" r="2.5"/><path d="M3 13h16M19 11l3-2v4"/></svg>
+        </div>
+        <h3>Caravans &amp; campervans</h3>
+        <p>Hit the road with a caravan or campervan financed around your budget.</p>
+      </div>
+      <div class="asset-card">
+        <div class="asset-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 15c2-5 6-8 10-8s8 3 10 8"/><path d="M3 15h18M12 7V5"/><path d="M7 11l-2 4M17 11l2 4"/></svg>
+        </div>
+        <h3>Marine &amp; jet ski</h3>
+        <p>Boats, launches, and jet skis — get on the water sooner.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section" id="how-it-works">
+  <div class="how-inner">
+    <div class="section-heading">
+      <div class="section-label" style="justify-content:center">How it works</div>
+      <h2>Simple steps, no surprises</h2>
+      <p>From first call to keys in hand — here's what to expect when you work with Carswell Finance.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h4>Get in touch</h4>
+        <p>Call us, email, or fill in our quick enquiry form. A real person responds — often within the hour.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h4>We listen</h4>
+        <p>We take the time to understand what you need — and if it suits you, we'll come to meet you in person.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h4>We find the right deal</h4>
+        <p>We work across multiple lenders to find finance that fits your situation and your repayment comfort.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h4>You get the keys</h4>
+        <p>Once approved, funds are settled quickly so you can get on with enjoying your new purchase.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENQUIRY FORM -->
+<section class="form-section" id="enquire">
+  <div class="form-inner">
+    <div class="form-info">
+      <div class="section-label">Get in touch</div>
+      <h2>Let's have a conversation.</h2>
+      <p>The quickest way to get started is a phone call — it gives us a chance to understand your situation and start working on a solution straight away. Or fill in the form and we'll call you.</p>
+      <div class="contact-options">
+        <div class="contact-option">
+          <div class="co-icon amber-bg">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 2h4l2 5-2.5 1.5a10 10 0 005 5L14 11l5 2v4a2 2 0 01-2 2C6.5 19 1 13.5 1 4a2 2 0 013-1.73z"/></svg>
+          </div>
+          <div class="co-text">
+            <strong>Call us directly</strong>
+            Available 7 days, 8:00 am – 9:00 pm · (03) XXX XXXX
+          </div>
+        </div>
+        <div class="contact-option">
+          <div class="co-icon">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="16" height="12" rx="2"/><path d="M2 7l8 5 8-5"/></svg>
+          </div>
+          <div class="co-text">
+            <strong>Email us</strong>
+            hello@carswellfinance.co.nz — we reply the same day
+          </div>
+        </div>
+        <div class="contact-option">
+          <div class="co-icon">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 2C7 2 4 4.5 4 8c0 5 6 10 6 10s6-5 6-10c0-3.5-3-6-6-6z"/><circle cx="10" cy="8" r="2"/></svg>
+          </div>
+          <div class="co-text">
+            <strong>We come to you — Dunedin wide</strong>
+            We're happy to visit you at home or at work at a time that suits
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="enquiry-form">
+      <h3>Send us an enquiry</h3>
+      <div class="form-grid">
+        <div class="form-row">
+          <label for="fname">First name</label>
+          <input type="text" id="fname" placeholder="Jane">
+        </div>
+        <div class="form-row">
+          <label for="lname">Last name</label>
+          <input type="text" id="lname" placeholder="Smith">
+        </div>
+      </div>
+      <div class="form-grid">
+        <div class="form-row">
+          <label for="phone">Phone number</label>
+          <input type="tel" id="phone" placeholder="021 XXX XXXX">
+        </div>
+        <div class="form-row">
+          <label for="email">Email address</label>
+          <input type="email" id="email" placeholder="jane@email.com">
+        </div>
+      </div>
+      <div class="form-row">
+        <label for="asset">What are you looking to finance?</label>
+        <select id="asset">
+          <option value="">Select an asset type…</option>
+          <option>New car</option>
+          <option>Used car</option>
+          <option>Luxury / prestige vehicle</option>
+          <option>Motorbike</option>
+          <option>Motorhome</option>
+          <option>Caravan or campervan</option>
+          <option>Boat or marine</option>
+          <option>Jet ski</option>
+          <option>Not sure yet</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label for="message">Anything else you'd like us to know? (optional)</label>
+        <textarea id="message" placeholder="e.g. rough budget, timeframe, or any questions…"></textarea>
+      </div>
+      <button class="form-submit" onclick="handleSubmit()">
+        <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 10l16-8-8 16v-8L2 10z"/></svg>
+        Send my enquiry
+      </button>
+      <p class="form-note">Or call us directly — we love a good chat. Available 7 days.</p>
+      <div class="success-msg" id="successMsg">
+        Thanks! We've received your enquiry and will be in touch very soon — usually within the hour during business hours.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo">
+        <div class="logo-mark">
+          <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 2L3 7v10h5v-5h4v5h5V7L10 2z" fill="white" opacity="0.9"/>
+          </svg>
+        </div>
+        <span class="logo-text">Carswell <span>Finance</span></span>
+      </div>
+      <p>Your local Dunedin lending specialist. Personal, approachable, and available when you need us — 7 days a week.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Finance options</h5>
+      <ul>
+        <li><a href="#">New &amp; used cars</a></li>
+        <li><a href="#">Luxury vehicles</a></li>
+        <li><a href="#">Motorbikes</a></li>
+        <li><a href="#">Motorhomes</a></li>
+        <li><a href="#">Caravans</a></li>
+        <li><a href="#">Marine &amp; jet ski</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contact us</h5>
+      <div class="footer-contact-item">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 2h4l2 5-2.5 1.5a10 10 0 005 5L14 11l5 2v4a2 2 0 01-2 2C6.5 19 1 13.5 1 4a2 2 0 013-1.73z"/></svg>
+        (03) XXX XXXX
+      </div>
+      <div class="footer-contact-item">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="4" width="16" height="12" rx="2"/><path d="M2 7l8 5 8-5"/></svg>
+        hello@carswellfinance.co.nz
+      </div>
+      <div class="footer-contact-item">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 2C7 2 4 4.5 4 8c0 5 6 10 6 10s6-5 6-10c0-3.5-3-6-6-6z"/><circle cx="10" cy="8" r="2"/></svg>
+        Dunedin, New Zealand
+      </div>
+      <div class="footer-contact-item">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10" cy="10" r="8"/><path d="M10 5v5l3 3"/></svg>
+        Mon–Sun · 8:00 am – 9:00 pm
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Carswell Finance Ltd. All rights reserved. · New Zealand Financial Services Provider.</p>
+    <div class="footer-legal">
+      <a href="#">Privacy policy</a>
+      <a href="#">Responsible lending</a>
+      <a href="#">Terms</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function handleSubmit() {
+    const fname = document.getElementById('fname').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const asset = document.getElementById('asset').value;
+    if (!fname || !phone || !asset) {
+      alert('Please fill in your name, phone number, and asset type.');
+      return;
+    }
+    document.querySelector('.form-submit').disabled = true;
+    document.querySelector('.form-submit').textContent = 'Sending…';
+    setTimeout(function() {
+      document.getElementById('successMsg').style.display = 'block';
+      document.querySelector('.form-submit').textContent = 'Sent!';
+    }, 800);
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+</script>
+</body>
+</html>
